@@ -4,7 +4,15 @@
             <h1 class="display-1 danfo brown text-center">snorKua</h1>
         </article>
         <article class="col-12">
-            
-        </article>
-    </section>
+            <!-- [leafletOptions]="options" consente di impostare dinamicamente lo stato iniziale della mappa -->
+            <!-- (leafletMapReady)="onMapReady($event)": Questa direttiva ascolta l'evento leafletMapReady. Quando la mappa Leaflet è completamente inizializzata e pronta per l'uso, questo evento viene attivato. -->
+            <!-- (leafletClick)="mapClicked($event)": Questa direttiva ascolta l'evento leafletClick. Ogni volta che l'utente fa clic sulla mappa, questo evento viene attivato -->
+            <div class="map-container"
+            leaflet
+            [leafletOptions]="options"
+            (leafletMapReady)="onMapReady($event)"
+            (leafletClick)="mapClicked($event)">
+        </div>
+    </article>
+</section>
 </header>

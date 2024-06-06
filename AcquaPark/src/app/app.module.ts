@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -30,7 +31,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     NgbModule,
     BrowserAnimationsModule,
     MatFormFieldModule,MatInputModule,MatCheckboxModule,MatButtonModule,MatSliderModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LeafletModule
   ],
   providers: [],
   bootstrap: [AppComponent]
