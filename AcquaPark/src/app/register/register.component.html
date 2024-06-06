@@ -1,0 +1,84 @@
+<header class="container-fluid back-reg vh-100">
+    <section class="row h-100 justify-content-center align-items-center">
+        <article class="col-5 backdrop-blur rounded-4 border border-black pb-4 position-relative">
+            <h1 class="lilita display-5 text-center whitesmoke" style="transform: translateY(-50%);">Registrati</h1>
+            <form [formGroup]="registrati">
+                <div class="w-100 d-flex flex-column align-items-center position-relative">
+                    <span class="position-absolute end-0" style="transform: translateX(100%); background: radial-gradient(circle, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);">
+                            <p *ngIf="registrati.controls.nome.errors?.['required'] && registrati.controls.nome.dirty" class="ubuntu fw-bolder cerise py-2 m-0 fs-5">
+                            Campo nome richiesto!!!
+                            </p>
+                    </span>
+                    <mat-form-field appearance="fill" class="w-75 cursor-pointer position-relative">
+                        <mat-label class="brown ubuntu fw-bold">Inserisci il nome:</mat-label>
+                        <input type="text" matInput placeholder="Nome..." maxlength="20" class="brown ubuntu fw-bold" formControlName="nome">
+                        <!-- Informiamo l'utente di eventuali suggerimenti per il campo -->
+                        <!-- <mat-hint>Hint</mat-hint> -->
+                    </mat-form-field>
+                </div>
+                <div class="w-100 d-flex flex-column align-items-center position-relative">
+                    <span class="position-absolute end-0" style="transform:translateX(100%);background: radial-gradient(circle, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);">
+                            <p *ngIf="registrati.controls.cognome.errors?.['required'] && registrati.controls.cognome.dirty" class="ubuntu fw-bolder cerise py-2 m-0 fs-5 text-center">
+                            Per andare avanti devi immetere <br> il cognome!!!
+                            </p>
+                    </span>
+                    <mat-form-field appearance="fill" class="w-75  cursor-pointer">
+                        <mat-label class="brown ubuntu fw-bold">Cognome:</mat-label>
+                        <input type="text" matInput placeholder="Cognome..." maxlength="20" class="brown ubuntu fw-bold" formControlName="cognome">
+                    </mat-form-field>
+                </div>
+                    
+                    <div class="w-75 mx-auto d-flex flex-column back-whitesmoke rounded-top px-5 pt-3 mb-4">       
+                        <mat-label class="brown ubuntu fw-bold">Riporta l'età: <span class="brown ubuntu fw-bolder ">{{registrati.value.eta}}</span> anni</mat-label>
+                        <!-- discrete permette di visualizzare un etichetta con il valore in prossimità del range  -->
+                        <mat-slider min="16" max="100" step="1" color="default">
+                            <input matSliderThumb formControlName="eta">
+                        </mat-slider>
+                    </div>
+            
+                <div class="w-100 d-flex flex-column align-items-center position-relative">
+                    <span class="position-absolute end-0" style="transform:translateX(100%); background: radial-gradient(circle, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);">
+                            <p *ngIf="registrati.controls.citta.errors?.['required'] && registrati.controls.citta.dirty" class="ubuntu fw-bolder cerise py-2 m-0 fs-5">
+                            La tua città è un requisito!!!
+                            </p>
+                    </span>
+                    <mat-form-field appearance="fill" class="w-75  cursor-pointer">
+                        <mat-label class="brown ubuntu fw-bold">Dove sei ubicato:</mat-label>
+                        <input type="text" matInput placeholder="Città..." maxlength="20" class="brown ubuntu fw-bold" formControlName="citta">
+                    </mat-form-field>
+                </div>
+                <div class="w-100 d-flex flex-column align-items-center position-relative">
+                    <span class="position-absolute end-0" style="transform:translateX(100%); background: radial-gradient(circle, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);">
+                           <p *ngIf="registrati.controls.email.errors?.['required'] && registrati.controls.email.dirty" class="ubuntu fw-bolder cerise py-2 m-0 fs-5">
+                                Email non compilato!!!
+                           </p>
+                           <p *ngIf="registrati.controls.email.errors?.['email'] && registrati.controls.email.dirty" class="ubuntu fw-bolder cerise py-2 m-0 fs-5 text-center">
+                                Email non valida deve<br> ammettere &#x40; e un estensione!!!
+                           </p>
+                    </span>
+                    <mat-form-field appearance="fill" class="w-75 cursor-pointer">
+                        <mat-label class="brown ubuntu fw-bold">Convalida email:</mat-label>
+                        <input type="text" matInput placeholder="example@gmail.com" maxlength="20" class="brown ubuntu fw-bold" formControlName="email">
+                    </mat-form-field>
+                </div>
+                <div class="w-100 d-flex flex-column align-items-center position-relative">
+                    <span class="position-absolute end-0" style="transform:translateX(100%); background: radial-gradient(circle, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);">
+                        <p *ngIf="registrati.controls.password.errors?.['required'] && registrati.controls.password.dirty" class="ubuntu fw-bolder cerise py-2 m-0 fs-5">
+                            La password richiesta, non inserita!!!
+                       </p>
+                       <p *ngIf="registrati.controls.password.errors?.['pattern'] && registrati.controls.password.dirty" class="ubuntu fw-bolder cerise py-2 m-0 fs-5 text-center">
+                            La password deve contenere <br> almeno un numero, un carattere maiuscolo <br> e minuscolo!!!
+                       </p>
+                    </span>
+                    <mat-form-field appearance="fill" class="w-75  cursor-pointer">
+                        <mat-label class="brown ubuntu fw-bold">Digita password:</mat-label>
+                        <input type="password" matInput placeholder="Password..." maxlength="20" class="brown ubuntu fw-bold" formControlName="password">
+                        <!-- Informiamo l'utente di eventuali suggerimenti per il campo -->
+                        <mat-hint class="ubuntu fw-bold yellow-naples">La password è sicura con minimo 8 caratteri</mat-hint>
+                    </mat-form-field>
+                </div>
+                <button mat-raised-button class="brown lilita letter-spacing fw-bold d-block mx-auto mt-3" [disabled]="registrati.invalid" [ngClass]="{'yellow-naples':registrati.invalid}">Continua</button>
+            </form>
+        </article>
+    </section>
+</header>

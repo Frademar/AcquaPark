@@ -1,1 +1,35 @@
-<p>login works!</p>
+<header class="container-fluid vh-100 d-flex align-items-center back-log">
+    <section class="row w-100">
+        <article class="col-5 position-relative rounded-3 border border-black ms-5 p-1 overflow-hidden shadow-lg">
+            <div style="height: 400%; width:400%; top:-100%; left:-100%" class="position-absolute back-login-animate z-0"></div>
+            <form class=" p-2 rounded-3 back-whitesmoke position-relative z-1" [formGroup]="login">
+                <img src="\assets\images\snorkua.png" alt="logo" class="mx-auto d-block mt-2" style="width:80px;">
+                <h1 class="lilita display-4 text-center brown mt-4">Accedi</h1>
+                <div class="w-75 d-flex flex-column mx-auto">
+                    <mat-form-field appearance="outline" class="w-100 cursor-pointer">
+                        <mat-label class="brown ubuntu fw-bold">Compila email</mat-label>
+                        <input type="text" matInput placeholder="example@gmail.com" class="brown ubuntu fw-bold" formControlName="email">
+                        <!-- Informiamo l'utente di eventuali suggerimenti per il campo -->
+                        <!-- <mat-hint>Hint</mat-hint> -->
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100 cursor-pointer">
+                        <mat-label class="brown ubuntu fw-bold">Convalida password</mat-label>
+                        <ng-container *ngIf="visualizza; else text">
+                            <input type="password" matInput placeholder="Password..." class="brown ubuntu fw-bold" formControlName="password">
+                        </ng-container>
+                        <ng-template #text>
+                            <input type="text" matInput placeholder="Password..." class="brown ubuntu fw-bold" formControlName="password">
+                        </ng-template>
+                    </mat-form-field>
+                    <mat-checkbox
+                    color="primary"
+                    (change)="toggleView()"
+                    class="ubuntu fw-bold">
+                    Visualizza
+                </mat-checkbox>
+                <button mat-raised-button class="my-3 w-50 mx-auto brown lilita letter-spacing fw-bold">Accedi</button>
+            </div>
+        </form>
+    </article>
+</section>
+</header>

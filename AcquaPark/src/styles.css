@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Danfo&display=swap');
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .lilita{
@@ -7,15 +10,45 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-weight: 400;
     font-style: normal;
 }
+.ubuntu{
+    font-family: "Ubuntu Sans", sans-serif !important;
+  }
 .brown{
-    color:#441711;
+    color:#441711 !important;
 }
 .back-whitesmoke{
-    background-color: whitesmoke;
+    background-color: whitesmoke !important;
 }
+.cursor-pointer{
+    cursor: pointer;
+}
+.whitesmoke{
+    color:whitesmoke;
+}
+.cerise{
+    color:#DA4167;
+}
+.yellow-naples{
+    color: #f4d35e !important;;
+}
+.transition-duration{
+    transition-duration: 1s;
+}
+.danfo{
+    font-family: "Danfo", serif;
+}
+
+/* LOGIN */
 .back-login-animate{
      background: linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(255,170,0,1) 100%);
      animation: loop-giro infinite 5s linear;
+}
+.back-log{
+    /* background-image: url("https://images.pexels.com/photos/19254497/pexels-photo-19254497/free-photo-of-donna-relax-piscina-giovane.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
+    background-image: url("src/assets/images/waterPark.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 @keyframes loop-giro {
     0%{
@@ -24,4 +57,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     100%{
         transform:rotate(360deg); 
     }
+}
+/* REGISTER */
+.back-reg{
+    background-image: url("src/assets/images/waterSlider.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.backdrop-blur{
+    backdrop-filter: blur(15px);
+}
+
+.letter-spacing{
+    letter-spacing: 1.5px;
 }
