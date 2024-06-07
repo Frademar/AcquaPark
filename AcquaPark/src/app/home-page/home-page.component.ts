@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as L from 'leaflet';
 import * as Leaflet from 'leaflet'; 
+import { AcquaparkService } from '../services/acquapark.service';
 
 Leaflet.Icon.Default.imagePath = 'assets/';
 @Component({
@@ -23,7 +24,7 @@ export class HomePageComponent {
       })
     ],
     zoom: 18,
-    center: { lat: 40.559695, lng: 14.9026283 }
+    center: { lat: 40.5594706011208, lng: 14.90499794483185 }
   }
 
   initMarkers() {
@@ -32,8 +33,8 @@ export class HomePageComponent {
         position: { lat: 40.559273040142976, lng: 14.904316663742067 },
         // L'opzione draggable permette di trascinare il marcatore cliccarlo e trascinarlo
         // draggable: true,
-        name:"SnorKua",
-        url:"https://www.aquafarm.it/img/foto/big_river.jpg"
+        name:"Happy park",
+        url:"https://www.aquafarm.it/img/foto/happypark/happypark01.jpg"
       },
       {
         position:{ lat: 40.55979470584164, lng: 14.904445409774782 },
@@ -56,6 +57,16 @@ export class HomePageComponent {
         url:"https://www.aquafarm.it/img/foto/idrotubo.jpg"
       },
       {
+        position:{lat:40.55940131729386, lng:14.905346632003786},
+        name:"Big river",
+        url:"https://www.aquafarm.it/img/foto/big_river.jpg"
+      },
+      {
+        position:{lat:40.559054897083584, lng:14.905437827110292},
+        name:"Toboga",
+        url:"https://www.aquafarm.it/img/foto/toboga.jpg"
+      },
+      {
         position:{lat:40.558714996006884, lng:14.904890656471254},
         name:"Idromassaggio",
         url:"https://www.aquafarm.it/img/foto/idromassaggio.jpg"
@@ -71,7 +82,7 @@ export class HomePageComponent {
         url:"https://www.aquafarm.it/img/foto/trampolino.jpg"
       },
       {
-        position:{lat:40.55891877385289, lng:14.905561208724977},
+        position:{lat:40.55877368406526, lng:14.90575432777405},
         name:"Pipe park",
         url:"https://www.aquafarm.it/img/foto/paippark/img02.jpg"
       },
@@ -81,34 +92,34 @@ export class HomePageComponent {
         url:"https://www.aquafarm.it/img/foto/piscina_onde04.jpg"
       }
     ];
+
     for (let index = 0; index < initialMarkers.length; index++) {
       const data = initialMarkers[index];
       const marker = this.generateMarker(data, index);
-      // Aggiungiamo un poupup al marcatore inerente al luogo puntato.
-     
+      // Aggiungiamo un poupup al marcatore inerente al luogo puntato. 
         marker.addTo(this.map).bindPopup(`<img class="w-100" src=${data.url}>`);
-      
       // Questo è un metodo fornito da Leaflet.js che consente di modificare programmaticamente il centro della vista della mappa.  
-      this.map.panTo(data.position);
+      // this.map.panTo(data.position);
       this.markers.push(marker);
     }
   }
 
+  constructor(private service : AcquaparkService){}
+
   // Questa funzione permette l'integrazione di un marcatore alla posizione corrente
   generateMarker(data: any, index: number) {
-    console.log(index);  
     return Leaflet.marker(data.position, { draggable: data.draggable })
       .on('click', (event) => this.markerClicked(event, index))
   }
 
   onMapReady($event: Leaflet.Map) {
     this.map = $event;
-    console.log(this.map);
-    
     this.initMarkers();
   }
 
   mapClicked($event: any) {
+    this.service.giostreVicine($event.latlng.lng,$event.latlng.lat,100).subscribe(
+    {next: (data : any)=>console.log(data) });
     console.log($event.latlng.lat, $event.latlng.lng);
   }
 

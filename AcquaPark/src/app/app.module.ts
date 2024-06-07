@@ -17,7 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {RegisterComponent } from './register/register.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { HomePageComponent } from './home-page/home-page.component';
-
+import {HttpClientModule} from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +32,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     BrowserAnimationsModule,
     MatFormFieldModule,MatInputModule,MatCheckboxModule,MatButtonModule,MatSliderModule,
     ReactiveFormsModule,
-    LeafletModule
+    LeafletModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
